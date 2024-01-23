@@ -7,6 +7,7 @@ import SignIn from "./Views/Signin";
 import Projects from "./Views/Projects";
 import Dashboard from "./Views/Dashboard";
 import SignUp from "./Views/Signup";
+import "./index.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
