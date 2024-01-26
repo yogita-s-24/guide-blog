@@ -20,6 +20,10 @@ const connectDB = () =>{
 }
 connectDB();
 
+app.get('/health', (req,res)=>{
+    res.json({message: "API is working."})
+})
+
 const PORT = process.env.PORT;
 
 app.listen(PORT, ()=>{
