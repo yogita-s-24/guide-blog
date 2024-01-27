@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 dotenv.config();
+import getHealthAPI from "./controllers/health";
 
 const app = express();
 
@@ -20,9 +21,7 @@ const connectDB = () =>{
 }
 connectDB();
 
-app.get('/health', (req,res)=>{
-    res.json({message: "API is working."})
-})
+app.get('/health', getHealthAPI)
 
 const PORT = process.env.PORT;
 
