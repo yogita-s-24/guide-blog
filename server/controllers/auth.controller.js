@@ -1,16 +1,8 @@
 import User from "../models/user.model.js";
-import bcryptjs from 'bcrypt';
+import bcryptjs from "bcryptjs";
 
-const postApisignup = async (req , res) => {
+const postApisignup = async (req, res) => {
   const { username, email, password } = req.body;
-
-const hashedPassword = bcryptjs.hashSync(password, 10);
-
-  const user = new User({
-    username,
-    email,
-    password : hashedPassword,
-  });
 
   if (
     !username ||
@@ -20,25 +12,19 @@ const hashedPassword = bcryptjs.hashSync(password, 10);
     email === "" ||
     password === ""
   ) {
-    return res.status(400).json({
-      message: "All field are required.",
-    });
-  }
-  try{
-    const saveUserData = await user.save();
-    res.json({
-      success: true,
-      data: saveUserData,
-      message: "User data save Successfully.",
-    });
+    // return res.status(400).json({ message: "All fields are required." });
+    next(errorHandler(400, 'All filed are required.'))
   }
 
-  catch(error){
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+  try {
+    const hashedPassword = await bcryptjs.hash(password, 10);
+    const user = new User({ username, email, password: hashedPassword });
+    const savedUser = await user.save();
+    res.json({ message: "Signup Successful", data: savedUser });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
-export { postApisignup }
+export { postApisignup };
