@@ -8,6 +8,7 @@ import Dashboard from "./Views/Dashboard";
 import SignUp from "./Views/SignUp";
 import "./index.css";
 
+
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -38,5 +39,4 @@ const App = () => {
 
   return <RouterProvider router={router}/>;
 };
-
 export default App;

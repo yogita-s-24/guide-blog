@@ -2,6 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { useState } from "react";
+import FooterCamp from "../components/Footer";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -32,7 +33,7 @@ export default function SignUp() {
         return setErrorMessage(data.message);
       }
       setLoading(false);
-
+      
       if (res.ok) {
         navigate("/sign-in");
       }
@@ -118,6 +119,7 @@ export default function SignUp() {
           </div>
         </div>
       </div>
+      <FooterCamp/>
     </>
   );
 }
