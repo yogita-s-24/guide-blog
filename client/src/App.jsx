@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Views/Home";
 import About from "./Views/About";
-import SignIn from "./Views/Signin";
+import SignIn from "./Views/SignIn";
 import Projects from "./Views/Projects";
 import Dashboard from "./Views/Dashboard";
 import SignUp from "./Views/SignUp";
